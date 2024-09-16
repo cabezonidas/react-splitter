@@ -1,3 +1,4 @@
 .Splitter {
   display: grid;
+  position: relative;
 }
