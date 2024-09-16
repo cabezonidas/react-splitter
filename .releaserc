@@ -2,7 +2,6 @@
   "branches": [
     "main"
   ],
-  "repositoryUrl": "https://github.com/cabezonidas/react-splitter.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
