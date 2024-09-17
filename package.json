@@ -1,6 +1,6 @@
 {
   "name": "@cabezonidas/react-splitter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Splitter for React",
   "main": "dist/index.js",
   "module": "dist/index.js",
