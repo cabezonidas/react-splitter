@@ -3,7 +3,7 @@ import React from "react";
 import { Splitter } from "./Splitter";
 
 const meta = {
-  title: "Example/Splitter",
+  title: "Splitter",
   component: Splitter,
 } satisfies Meta<typeof Splitter>;
 
@@ -50,7 +50,15 @@ const fullscreen = (
 export const Vertical: Story = fullscreen(initial());
 
 export const Horizontal: Story = fullscreen(
-  initial({ args: { orientation: "horizontal" } }),
+  initial({ args: { horizontal: true } }),
+);
+
+export const BoundariesFixed: Story = fullscreen(
+  initial({ args: { min: "100px", max: "-100px", startAt: "1st-collapsed" } }),
+);
+
+export const BoundariesRelative: Story = fullscreen(
+  initial({ args: { min: 20, max: 80, startAt: "1st-collapsed" } }),
 );
 
 export const Navbar: Story = fullscreen(

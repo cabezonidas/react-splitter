@@ -1,80 +1,103 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { clsx } from "./helpers/clsx";
 import { setDataBoundary } from "./helpers/dataBoundary";
 import { Separator } from "./Separator/Separator";
-
-type ButtonProps = JSX.IntrinsicElements["button"];
-
-type BoundaryPx = { min?: `${number}px`; max?: `${number}px` };
-type BoundaryNum = { min?: number; max?: number };
-type BoundaryProps = BoundaryPx | BoundaryNum;
-
-type Start = number | "1st-collapsed" | "2nd-collapsed";
-type Controlled = { ratio?: number; startAt?: never };
-type Uncontrolled = { ratio?: never; startAt?: Start };
-type RatioProps = Controlled | Uncontrolled;
-
-type Props = {
-  onResized?: (ratio: number) => void;
-  orientation?: "horizontal" | "vertical";
-  parts?: {
-    separator?: React.ComponentPropsWithRef<"div">;
-    controls?: {
-      container?: React.ComponentPropsWithRef<"span">;
-      primary?: ButtonProps;
-      secondary?: ButtonProps;
-    };
-  };
-} & React.HTMLAttributes<HTMLDivElement> &
-  RatioProps &
-  BoundaryProps;
 
 /**
  * Container that appends a separator when the children count equals 2.
  * It looks at HTML nodes, not React components
  */
-export const Splitter = React.forwardRef<HTMLDivElement, Props>(
-  (props = {}, ref) => {
-    const {
-      parts,
-      ratio,
-      onResized,
-      min,
-      max,
-      children,
-      orientation = "vertical",
-      startAt,
-      ...rest
-    } = props;
+export const Splitter = React.forwardRef<
+  HTMLDivElement,
+  {
+    startAt?: number | "1st-collapsed" | "2nd-collapsed";
+    ratio?: number;
+    min?: number | `${number}px`;
+    max?: number | `${number}px`;
+    onResized?: (ratio: number) => void;
+    horizontal?: true;
+    parts?: {
+      separator?: JSX.IntrinsicElements["div"];
+      controls?: {
+        container?: JSX.IntrinsicElements["span"];
+        primary?: JSX.IntrinsicElements["button"];
+        secondary?: JSX.IntrinsicElements["button"];
+      };
+    };
+  } & JSX.IntrinsicElements["div"]
+>((props = {}, ref) => {
+  const {
+    min: minProp,
+    max: maxProp,
+    startAt: startAtProp,
+    parts,
+    ratio,
+    onResized,
+    children,
+    horizontal,
+    ...rest
+  } = props;
 
-    return (
-      <div
-        ref={ref}
-        {...rest}
-        className={clsx("react-splitter", rest?.className)}
-      >
-        {children}
-        <Separator
-          {...parts?.separator}
-          tabIndex={0}
-          data-minpx={typeof min === "string" ? min : undefined}
-          data-maxpx={typeof max === "string" ? max : undefined}
-          aria-valuemin={typeof min === "number" ? Math.max(min, 0) : 0}
-          aria-valuemax={typeof max === "number" ? Math.min(max, 100) : 100}
-          role="separator"
-          aria-orientation={orientation}
-          ratio={ratio}
-          onResized={onResized}
-          parts={parts?.controls}
-          startAt={mapStartAt({ ratio, startAt })}
-          {...setDataBoundary({ min, max })}
-        />
-      </div>
-    );
-  },
-);
+  const startAt = mapStartAt({ ratio, startAt: startAtProp });
+  const boundaries = mapBoundaries({ min: minProp, max: maxProp });
+  const { min, max } = boundaries ?? {};
+
+  useEffect(() => {
+    if (boundaries === undefined) {
+      console.warn(
+        `Boundaries in different units is not supported. Properties min={${minProp}} and max={${maxProp}} are omitted`,
+      );
+    }
+  }, [boundaries]);
+
+  useEffect(() => {
+    if (startAt !== undefined && ratio !== undefined) {
+      console.warn(
+        `Property startAt and ratio are incompatible. Properties startAt={${startAt}} is omitted`,
+      );
+    }
+  }, [ratio, startAt]);
+
+  return (
+    <div
+      ref={ref}
+      {...rest}
+      className={clsx("react-splitter", rest?.className)}
+    >
+      {children}
+      <Separator
+        {...parts?.separator}
+        role="separator"
+        tabIndex={0}
+        aria-orientation={horizontal ? "horizontal" : "vertical"}
+        aria-valuemin={typeof min === "number" ? Math.max(min, 0) : 0}
+        aria-valuemax={typeof max === "number" ? Math.min(max, 100) : 100}
+        data-minpx={typeof min === "string" && min ? min : undefined}
+        data-maxpx={typeof max === "string" && max ? max : undefined}
+        parts={parts?.controls}
+        {...{ ratio, onResized, startAt }}
+        {...setDataBoundary({ min, max })}
+      />
+    </div>
+  );
+});
 
 Splitter.displayName = "Splitter";
+
+type Props = React.ComponentProps<typeof Splitter>;
+
+const mapBoundaries = ({
+  min,
+  max,
+}: {
+  min?: number | `${number}px`;
+  max?: number | `${number}px`;
+}) => {
+  const boundaryTypes = [typeof min, typeof max];
+  if (boundaryTypes.includes("string") && boundaryTypes.includes("number"))
+    return;
+  return { min, max };
+};
 
 const mapStartAt = (
   props: Pick<Props, "ratio" | "startAt">,
