@@ -1,10 +1,9 @@
 import React from "react";
-import { Control } from "./Control/Control";
 import { clsx } from "./helpers/clsx";
 import { setDataBoundary } from "./helpers/dataBoundary";
 import { Separator } from "./Separator/Separator";
 
-type ButtonProps = React.ComponentPropsWithRef<typeof Control>;
+type ButtonProps = JSX.IntrinsicElements["button"];
 
 type BoundaryPx = { min?: `${number}px`; max?: `${number}px` };
 type BoundaryNum = { min?: number; max?: number };
