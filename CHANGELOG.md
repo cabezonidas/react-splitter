@@ -1,3 +1,9 @@
+# [1.1.0](https://github.com/cabezonidas/react-splitter/compare/v1.0.0...v1.1.0) (2024-09-17)
+
+### Features
+
+- initial functionality ([811e7f6](https://github.com/cabezonidas/react-splitter/commit/811e7f6ebe5f9aa5a7fdc1fc6b6a737178e3b20f))
+
 # 1.0.0 (2024-09-16)
 
 ### Bug Fixes
