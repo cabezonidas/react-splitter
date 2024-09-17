@@ -49,7 +49,11 @@ export const Splitter = React.forwardRef<HTMLDivElement, Props>(
     } = props;
 
     return (
-      <div ref={ref} {...rest} className={clsx("Splitter", rest?.className)}>
+      <div
+        ref={ref}
+        {...rest}
+        className={clsx("react-splitter", rest?.className)}
+      >
         {children}
         <Separator
           {...parts?.separator}

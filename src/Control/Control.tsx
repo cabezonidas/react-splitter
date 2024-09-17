@@ -1,5 +1,4 @@
 import React from "react";
-import { clsx } from "../helpers/clsx";
 import { getSeparatorAttributes } from "../helpers/getSeparatorAttributes";
 import { useForkRef } from "../helpers/useForkRef";
 import { useControlIcon } from "./useControlIcon";
@@ -8,7 +7,7 @@ type Props = {
   side: "primary" | "secondary";
 } & JSX.IntrinsicElements["button"];
 
-const squareButtonSide = 25;
+const squareButtonSide = 26;
 
 export const Control = React.forwardRef<HTMLButtonElement, Props>(
   (props, forwardRef) => {
@@ -66,7 +65,7 @@ export const Control = React.forwardRef<HTMLButtonElement, Props>(
           height: squareButtonSide,
           borderRadius: "50%",
         }}
-        className={clsx("Control", icon, buttonProps?.className)}
+        data-icon={icon}
       />
     );
   },

@@ -64,13 +64,15 @@ export const Separator = forwardRef<HTMLDivElement, Props>(
       >
         <span
           {...parts?.container}
-          className={clsx("Separator-arrows", parts?.container?.className)}
           onMouseDown={cancelEvent}
           onTouchStart={cancelEvent}
+          role="group"
         >
           <Control
             {...parts?.primary}
             side="primary"
+            data-role="control"
+            data-control="primary"
             onClick={(e) => {
               setValueNow(controlClickHandler(e, "primary"));
               parts?.primary?.onClick?.(e);
@@ -79,6 +81,8 @@ export const Separator = forwardRef<HTMLDivElement, Props>(
           <Control
             {...parts?.secondary}
             side="secondary"
+            data-role="control"
+            data-control="secondary"
             onClick={(e) => {
               setValueNow(controlClickHandler(e, "secondary"));
               parts?.secondary?.onClick?.(e);
