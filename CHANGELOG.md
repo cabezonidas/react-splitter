@@ -1,3 +1,9 @@
+# [1.2.0](https://github.com/cabezonidas/react-splitter/compare/v1.1.0...v1.2.0) (2024-09-17)
+
+### Features
+
+- functionality first cut ([3601286](https://github.com/cabezonidas/react-splitter/commit/36012867e5e02024e96a09c7bc3d867f427cbf57))
+
 # [1.1.0](https://github.com/cabezonidas/react-splitter/compare/v1.0.0...v1.1.0) (2024-09-17)
 
 ### Features
