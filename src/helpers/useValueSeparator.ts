@@ -13,11 +13,11 @@ import { useValueSeparatorEffects } from "./useValueSeparatorEffects";
 export const useValueSeparator = ({
   separator,
   ratio,
-  onResized,
+  onRatioChanged,
   startAt,
 }: {
   ratio?: number;
-  onResized?: (newVal: number) => void;
+  onRatioChanged?: (newVal: number) => void;
   separator: RefObject<HTMLDivElement>;
   startAt?: number;
 }) => {
@@ -39,10 +39,10 @@ export const useValueSeparator = ({
           separator.current?.removeAttribute("data-sticky");
         }
         prev.current = newValue;
-        onResized?.(newValue);
+        onRatioChanged?.(newValue);
       }
     },
-    [onResized, prev],
+    [onRatioChanged, prev],
   );
   useValueSeparatorEffects(setValueNow, separator, ratio, startAt);
   return { setValueNow };

@@ -4,7 +4,6 @@ import React, {
   forwardRef,
 } from "react";
 import { Control } from "../Control/Control";
-import { clsx } from "../helpers/clsx";
 import { getKeyDownDeltaMove } from "../helpers/getKeyDownDeltaMove";
 import { getSeparatorAttributes } from "../helpers/getSeparatorAttributes";
 import { useForkRef } from "../helpers/useForkRef";
@@ -18,7 +17,7 @@ type Parts = NonNullable<ComponentProps<typeof Splitter>["parts"]>["controls"];
 type Props = Exclude<ComponentPropsWithoutRef<"div">, "children"> & {
   parts?: Parts;
   ratio?: number;
-  onResized?: (val: number) => void;
+  onRatioChanged?: (val: number) => void;
   startAt?: number;
 };
 
@@ -35,13 +34,13 @@ const cancelEvent = (e: {
 };
 
 export const Separator = forwardRef<HTMLDivElement, Props>(
-  ({ parts, ratio, onResized, startAt, ...props }, forwardRef) => {
+  ({ parts, ratio, onRatioChanged, startAt, ...props }, forwardRef) => {
     const separator = useForkRef(forwardRef);
 
     const { setValueNow } = useValueSeparator({
       ratio,
       separator,
-      onResized,
+      onRatioChanged,
       startAt,
     });
     useShowSeparator(separator);
@@ -60,7 +59,6 @@ export const Separator = forwardRef<HTMLDivElement, Props>(
           }
           props?.onKeyDown?.(e);
         }}
-        className={clsx("Separator", props.className)}
       >
         <span
           {...parts?.container}

@@ -106,7 +106,7 @@ export const Navbar: Story = fullscreen(
             },
           }}
           ratio={ratio}
-          onResized={setRatio}
+          onRatioChanged={setRatio}
         >
           <div
             ref={navRef}

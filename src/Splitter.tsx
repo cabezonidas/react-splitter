@@ -14,7 +14,7 @@ export const Splitter = React.forwardRef<
     ratio?: number;
     min?: number | `${number}px`;
     max?: number | `${number}px`;
-    onResized?: (ratio: number) => void;
+    onRatioChanged?: (ratio: number) => void;
     horizontal?: true;
     parts?: {
       separator?: JSX.IntrinsicElements["div"];
@@ -32,7 +32,7 @@ export const Splitter = React.forwardRef<
     startAt: startAtProp,
     parts,
     ratio,
-    onResized,
+    onRatioChanged,
     children,
     horizontal,
     ...rest
@@ -75,7 +75,7 @@ export const Splitter = React.forwardRef<
         data-minpx={typeof min === "string" && min ? min : undefined}
         data-maxpx={typeof max === "string" && max ? max : undefined}
         parts={parts?.controls}
-        {...{ ratio, onResized, startAt }}
+        {...{ ratio, onRatioChanged, startAt }}
         {...setDataBoundary({ min, max })}
       />
     </div>

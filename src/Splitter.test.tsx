@@ -70,7 +70,11 @@ describe("Splitter", () => {
   it("broadcasts slide changes", async () => {
     const onRatioChange = jest.fn();
     render(
-      <Splitter style={{ width: 100 }} ratio={25} onResized={onRatioChange}>
+      <Splitter
+        style={{ width: 100 }}
+        ratio={25}
+        onRatioChanged={onRatioChange}
+      >
         <section>1</section>
         <section>2</section>
       </Splitter>,
