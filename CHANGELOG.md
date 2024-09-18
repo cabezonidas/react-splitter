@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/cabezonidas/react-splitter/compare/v1.4.0...v1.5.0) (2024-09-18)
+
+### Features
+
+- rename property ([1b1788a](https://github.com/cabezonidas/react-splitter/commit/1b1788a2ea0a6b95ac944489b6ee76d7d2e88774))
+- update api & documentation ([72457e6](https://github.com/cabezonidas/react-splitter/commit/72457e6affd8441ea571440025522b06836a7d3d))
+
 # [1.4.0](https://github.com/cabezonidas/react-splitter/compare/v1.3.0...v1.4.0) (2024-09-18)
 
 ### Features
