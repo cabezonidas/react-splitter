@@ -1,3 +1,9 @@
+## [1.5.3](https://github.com/cabezonidas/react-splitter/compare/v1.5.2...v1.5.3) (2024-09-18)
+
+### Bug Fixes
+
+- improve warning messages ([78cab47](https://github.com/cabezonidas/react-splitter/commit/78cab47f7de34a3ecc6f30a37ca88878f3a25e70))
+
 ## [1.5.2](https://github.com/cabezonidas/react-splitter/compare/v1.5.1...v1.5.2) (2024-09-18)
 
 ### Bug Fixes
