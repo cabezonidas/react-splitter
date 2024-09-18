@@ -1,1 +1,1 @@
-export const Splitter = {};
+export { Splitter } from "./Splitter";
