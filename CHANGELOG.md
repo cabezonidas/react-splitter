@@ -1,3 +1,9 @@
+# [1.3.0](https://github.com/cabezonidas/react-splitter/compare/v1.2.0...v1.3.0) (2024-09-18)
+
+### Features
+
+- add tests and warnings ([9acbdfc](https://github.com/cabezonidas/react-splitter/commit/9acbdfc15fd4384b1893b785e5ecdcb1f9e5b98c))
+
 # [1.2.0](https://github.com/cabezonidas/react-splitter/compare/v1.1.0...v1.2.0) (2024-09-17)
 
 ### Features
