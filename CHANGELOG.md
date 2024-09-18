@@ -1,3 +1,9 @@
+# [1.4.0](https://github.com/cabezonidas/react-splitter/compare/v1.3.0...v1.4.0) (2024-09-18)
+
+### Features
+
+- actually add fn ([8c05585](https://github.com/cabezonidas/react-splitter/commit/8c05585e4784c37ecb146bd3d0eb392e9d272b88))
+
 # [1.3.0](https://github.com/cabezonidas/react-splitter/compare/v1.2.0...v1.3.0) (2024-09-18)
 
 ### Features
