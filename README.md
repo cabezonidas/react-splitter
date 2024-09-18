@@ -32,10 +32,13 @@ export const Example = () => {
 - https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/
 
 **Horizontal**
+
 [![Horizontal](https://github.com/cabezonidas/react-splitter/blob/main/assets/horizontal-splitter.gif?raw=true)](https://react-splitter.netlify.app/?path=/story/splitter--horizontal)
 
 **Vertical**
+
 [![Vertical](https://github.com/cabezonidas/react-splitter/blob/main/assets/vertical-splitter.gif?raw=true)](https://react-splitter.netlify.app/?path=/story/splitter--vertical)
 
 **Custom navbar**
-[![Navbar](https://github.com/cabezonidas/react-splitter/blob/main/assets/splitter-confluence.gif?raw=true)](https://react-splitter.netlify.app/?path=/story/splitter--navbar)
+
+[![Navbar](https://github.com/cabezonidas/react-splitter/blob/main/assets/splitter-confluence-navbar.gif?raw=true)](https://react-splitter.netlify.app/?path=/story/splitter--navbar)
