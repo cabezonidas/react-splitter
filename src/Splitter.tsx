@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { clsx } from "./helpers/clsx";
 import { setDataBoundary } from "./helpers/dataBoundary";
 import { Separator } from "./Separator/Separator";
@@ -42,21 +42,15 @@ export const Splitter = React.forwardRef<
   const boundaries = mapBoundaries({ min: minProp, max: maxProp });
   const { min, max } = boundaries ?? {};
 
-  useEffect(() => {
-    if (boundaries === undefined) {
-      console.warn(
-        `Boundaries in different units is not supported. Properties min=${minProp} and max=${maxProp} are omitted`,
-      );
-    }
-  }, [boundaries]);
+  useWarning({
+    message: `Boundaries in different units is not supported. Properties min and max are omitted`,
+    when: boundaries === undefined,
+  });
 
-  useEffect(() => {
-    if (startAtProp !== undefined && ratio !== undefined) {
-      console.warn(
-        `Property startAt and ratio are incompatible. Properties startAt=${startAtProp} is omitted`,
-      );
-    }
-  }, [ratio, startAtProp]);
+  useWarning({
+    message: `Property startAt and ratio are incompatible. Property startAt is omitted when both are present`,
+    when: startAtProp !== undefined && ratio !== undefined,
+  });
 
   return (
     <div
@@ -118,4 +112,14 @@ const mapStartAt = (
       // Can be started at any other number between 0 and 100.
       return props.startAt ?? 50;
   }
+};
+
+const useWarning = (props: { message: string; when: boolean }) => {
+  const warned = useRef(false);
+  useEffect(() => {
+    if (props.when && !warned.current) {
+      console.warn(props.message);
+      warned.current = true;
+    }
+  });
 };
