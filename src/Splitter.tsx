@@ -45,18 +45,18 @@ export const Splitter = React.forwardRef<
   useEffect(() => {
     if (boundaries === undefined) {
       console.warn(
-        `Boundaries in different units is not supported. Properties min={${minProp}} and max={${maxProp}} are omitted`,
+        `Boundaries in different units is not supported. Properties min=${minProp} and max=${maxProp} are omitted`,
       );
     }
   }, [boundaries]);
 
   useEffect(() => {
-    if (startAt !== undefined && ratio !== undefined) {
+    if (startAtProp !== undefined && ratio !== undefined) {
       console.warn(
-        `Property startAt and ratio are incompatible. Properties startAt={${startAt}} is omitted`,
+        `Property startAt and ratio are incompatible. Properties startAt=${startAtProp} is omitted`,
       );
     }
-  }, [ratio, startAt]);
+  }, [ratio, startAtProp]);
 
   return (
     <div
