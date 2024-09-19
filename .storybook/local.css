@@ -1,3 +1,30 @@
 * {
   font-family: sans-serif;
 }
+
+.sb-show-main {
+  height: 100vh;
+  width: 100vw;
+}
+
+#storybook-root {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.sb-story {
+  min-height: 100px;
+}
+.sb-story:has([data-name="Navbar"]) {
+  min-height: 200px;
+}
+
+.react-splitter {
+  position: absolute;
+  min-width: 300px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
