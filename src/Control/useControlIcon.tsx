@@ -20,7 +20,7 @@ export const useControlIcon = ({
     const observer = new MutationObserver(callback);
     observer.observe(separator!, { attributeFilter: ["aria-valuenow"] });
     return () => observer.disconnect();
-  }, [parent, side]);
+  }, [side]);
 
   return attributes;
 };
