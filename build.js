@@ -30,7 +30,7 @@ esbuild
     ...common,
     platform: "node",
     format: "cjs",
-    target: ["node12"],
     outfile: "dist/bundle.cjs.js",
+    external: [],
   })
   .catch(() => process.exit(1));
