@@ -2,8 +2,8 @@
   "name": "@cabezonidas/react-splitter",
   "version": "1.6.1",
   "description": "Splitter for React",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/bundle.cjs",
+  "module": "dist/bundle.esm.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
@@ -11,8 +11,8 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
+      "import": "./dist/bundle.esm.js",
+      "require": "./dist/bundle.cjs.js"
     }
   },
   "scripts": {
