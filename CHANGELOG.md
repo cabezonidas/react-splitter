@@ -1,3 +1,9 @@
+# [1.6.0](https://github.com/cabezonidas/react-splitter/compare/v1.5.3...v1.6.0) (2024-10-01)
+
+### Features
+
+- add bundle for node ([2096eb6](https://github.com/cabezonidas/react-splitter/commit/2096eb6047520cfa3fbea0390d644c0c973cdd3e))
+
 ## [1.5.3](https://github.com/cabezonidas/react-splitter/compare/v1.5.2...v1.5.3) (2024-09-18)
 
 ### Bug Fixes
