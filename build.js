@@ -1,19 +1,33 @@
 const esbuild = require("esbuild");
 
+const common = {
+  entryPoints: ["src/index.tsx"],
+  bundle: true,
+  minify: true,
+  sourcemap: false,
+  outfile: "dist/bundle.js",
+  define: {
+    "process.env.NODE_ENV": '"production"',
+  },
+  loader: {
+    ".js": "jsx",
+    ".ts": "ts",
+    ".tsx": "tsx",
+  },
+  external: ["react", "react-dom"],
+};
+
 esbuild
   .build({
-    entryPoints: ["src/index.tsx"],
-    bundle: true,
+    ...common,
     outfile: "dist/bundle.js",
-    sourcemap: true,
-    define: {
-      "process.env.NODE_ENV": '"production"',
-    },
-    loader: {
-      ".js": "jsx",
-      ".ts": "ts",
-      ".tsx": "tsx",
-    },
-    external: ["react", "react-dom"],
+  })
+  .catch(() => process.exit(1));
+
+esbuild
+  .build({
+    ...common,
+    platform: "node",
+    outfile: "dist/bundle.cjs.js",
   })
   .catch(() => process.exit(1));
