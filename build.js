@@ -1,11 +1,10 @@
+// eslint-disable-next-line
 const esbuild = require("esbuild");
 
 const common = {
   entryPoints: ["src/index.tsx"],
   bundle: true,
-  minify: true,
   sourcemap: false,
-  outfile: "dist/bundle.js",
   define: {
     "process.env.NODE_ENV": '"production"',
   },
@@ -14,13 +13,15 @@ const common = {
     ".ts": "ts",
     ".tsx": "tsx",
   },
-  external: ["react", "react-dom"],
 };
 
 esbuild
   .build({
     ...common,
-    outfile: "dist/bundle.js",
+    platform: "browser",
+    format: "esm",
+    outfile: "dist/bundle.esm.js",
+    external: ["react", "react-dom"],
   })
   .catch(() => process.exit(1));
 
@@ -28,6 +29,8 @@ esbuild
   .build({
     ...common,
     platform: "node",
+    format: "cjs",
+    target: ["node12"],
     outfile: "dist/bundle.cjs.js",
   })
   .catch(() => process.exit(1));
