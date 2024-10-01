@@ -1,6 +1,6 @@
 {
   "name": "@cabezonidas/react-splitter",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "description": "Splitter for React",
   "main": "dist/bundle.cjs",
   "module": "dist/bundle.esm.js",
