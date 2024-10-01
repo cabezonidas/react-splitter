@@ -1,3 +1,9 @@
+## [1.6.4](https://github.com/cabezonidas/react-splitter/compare/v1.6.3...v1.6.4) (2024-10-01)
+
+### Bug Fixes
+
+- revert changes & add bugfix ([07ecdf5](https://github.com/cabezonidas/react-splitter/commit/07ecdf5f3871eacce46862f5e83531ba1044cc6a))
+
 ## [1.6.3](https://github.com/cabezonidas/react-splitter/compare/v1.6.2...v1.6.3) (2024-10-01)
 
 ### Bug Fixes
